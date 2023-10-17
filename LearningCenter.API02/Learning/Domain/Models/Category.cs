@@ -1,5 +1,5 @@
 ﻿namespace LearningCenter.API02.Learning.Domain.Models;
-
+//using System.Collections.Generic;
 public class Category
 {
     //patron de diseño identity field
