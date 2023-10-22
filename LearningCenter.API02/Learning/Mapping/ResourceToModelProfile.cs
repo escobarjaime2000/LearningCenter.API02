@@ -9,5 +9,7 @@ public class ResourceToModelProfile:Profile
     protected ResourceToModelProfile()
     {
         CreateMap<SaveCategoryResource, Category>();
+        //22.10.2023<---
+        CreateMap<SaveTutorialResource, Tutorial>();
     }
 }
