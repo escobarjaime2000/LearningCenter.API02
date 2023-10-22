@@ -11,7 +11,7 @@ public static class StringExtensions
 //IEnumerable es una interfaz que representa a una coleccion
       static IEnumerable<char> Convert(CharEnumerator e)
       {
-         //si en esa coleccion enumerable ya no hay mas elementos
+         //si en esa coleccion Ienumerable ya no hay mas elementos
          //se sale con break 
          if (!e.MoveNext()) yield break; // si no hay siguiente
          // el caracter buscado se convierte a minuscula

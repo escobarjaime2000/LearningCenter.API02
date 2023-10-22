@@ -8,6 +8,7 @@ public static class ModelBuilderExtensions
     {
         //voy a recorrer toda la coleccion de tipos entity que tiene el 
         //modelo
+   
         foreach (var entity in builder.Model.GetEntityTypes())
         {
             entity.SetTableName(entity.GetTableName().ToSnakeCase());

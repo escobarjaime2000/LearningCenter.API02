@@ -6,6 +6,7 @@ using LearningCenter.API02.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 namespace LearningCenter.API02.Learning.Controllers;
 //22.10.2023
+
 [Route("/api/v1/[controller]")] //api/v1/categories
 public class CategoriesController: ControllerBase
 
