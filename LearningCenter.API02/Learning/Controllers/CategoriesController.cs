@@ -45,5 +45,46 @@ public class CategoriesController: ControllerBase
       return Ok(categoryResource);
 
    }
+ //Sesion 11-25.10.2023
+   //se va actualizar por eso se toma el Id
+   //el segundo parametro FromBody es la data que se va a reemplazar
+   [HttpPut("{id}")]
+   public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
+   {
+      //verificar que cumpla las reglas de validacion 
+      if (!ModelState.IsValid)
+      {
+         return BadRequest(ModelState.GetErrorMessages());
+      }
+      
+      //empezamos hacer la traduccion 
+      var category = _mapper.Map<SaveCategoryResource, Category>(resource);
+      //ejecutar la accion , interactuamos con la capa de servicio
+      var result = await _categoryService.UpdateAsync(id, category);
+      //comprobando el result
+      if (!result.Success)
+      {
+         //ebviamos el mensaje de la capa de servicio de lo que paso
+         return BadRequest(result.Message);
+      }
 
+      var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource);
+      return Ok(categoryResource);
+
+   }
+   
+   //la eliminacion es con [HttpDelete]
+   [HttpDelete("{id}")]
+   public async Task<IActionResult> DeleteAsync(int id)
+   {
+      var result = await _categoryService.DeleteAsync(id); // de forma directa
+
+      if (!result.Success)
+      {
+         return BadRequest(result.Message);
+      }
+
+      var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource);
+      return Ok(categoryResource);
+   }
 }
